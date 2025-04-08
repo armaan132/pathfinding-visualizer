@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Grid {
     private int rows;
     private int columns;
@@ -27,7 +30,11 @@ public class Grid {
                 if (cell.isStart()) {
                     System.out.print(" S ");
                 } else if (cell.isGoal()) {
-                    System.out.println(" G ");
+                    System.out.print(" G ");
+                } else if (cell.isPath()) {
+                    System.out.print(" X ");
+                } else if (cell.isVisited()) {
+                    System.out.print(" o ");
                 }else if (cell.isObstacle()) {
                     System.out.print(" # ");
                 } else {
@@ -42,5 +49,49 @@ public class Grid {
         return cells[row][column];
     }
 
+    public List<Cell> getNeighbors(Cell cell) {
+        List<Cell> neighbors = new ArrayList<>();
+        if (cell.getRow() > 0) {
+            neighbors.add(cells[cell.getRow() - 1][cell.getColumn()]);
+        }
+
+        if (cell.getRow() < rows - 1) {
+            neighbors.add(cells[cell.getRow() + 1][cell.getColumn()]);
+        }
+
+        if (cell.getColumn() > 0) {
+            neighbors.add(cells[cell.getRow()][cell.getColumn() - 1]);
+        }
+
+        if (cell.getColumn() < columns - 1) {
+            neighbors.add(cells[cell.getRow()][cell.getColumn() + 1]);
+        }
+
+        return neighbors;
+    }
+
+    //way to access the Start tile from the Grid class
+    public Cell getStartCell() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (cells[i][j].isStart()) {
+                    return cells[i][j];
+                }
+            }
+        }
+        return null;
+    }
+
+    //way to access the Goal tile from the Grid class
+    public Cell getGoalCell() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (cells[i][j].isGoal()) {
+                    return cells[i][j];
+                }
+            }
+        }
+        return null;
+    }
 }
 
