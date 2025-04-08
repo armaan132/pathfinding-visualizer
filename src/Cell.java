@@ -6,6 +6,8 @@ public class Cell {
     private boolean isStart = false;
     private boolean isGoal = false;
     private boolean isObstacle = false;
+    private boolean isVisited = false;
+    private boolean isPath = false;
 
     public Cell(int setrow, int setcolumn) {
         row = setrow;
@@ -42,6 +44,16 @@ public class Cell {
         isObstacle = obstacle;
     }
 
+    //set current status for current cell if it has been visited by alg
+    public void setVisited(boolean visited) {
+        isVisited = visited;
+    }
+
+    //set current status if the current cell is part of the path
+    public void setPath(boolean path) {
+        isPath = path;
+    }
+
     //"getter" for current status of cell if it is start
     public boolean isStart() {
         return isStart;
@@ -55,5 +67,15 @@ public class Cell {
     //"getter" for current status of a cell if it is a obstacle
     public boolean isObstacle() {
         return isObstacle;
+    }
+
+    //"getter" for current status of cell if it has been visited
+    public boolean isVisited() {
+        return isVisited;
+    }
+
+    //"getter" for checking if cell is part of algorithm path
+    public boolean isPath() {
+        return isPath;
     }
 }

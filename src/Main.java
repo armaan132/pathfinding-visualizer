@@ -1,8 +1,10 @@
+
 public class Main {
     public static void main(String[] args) {
         //First line - test
         System.out.println("Welcome to proj");
         Grid grid = new Grid(10, 10);
+
 
         //Sets 0, 0 to start, 9, 9 to goal, allows user input later integrations
         grid.getCell(0, 0).setStart(true);
@@ -22,5 +24,11 @@ public class Main {
 
         //displays the grid initially
         grid.printGrid();
+
+        System.out.println("\n\nRunning BFS algorithm!!\n\n");
+
+        PathfindingAlgorithms.bfs(grid, grid.getStartCell(), grid.getGoalCell());
+
+        //PUSHHHHHHHHHHH TIOOO GITTTTT
     }
 }
