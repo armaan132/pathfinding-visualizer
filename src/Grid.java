@@ -93,5 +93,30 @@ public class Grid {
         }
         return null;
     }
+
+    //reset grid - does not reset S, G, and Obstacles
+    public void resetGrid() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                Cell cell = cells[i][j];
+                cell.setVisited(false);
+                cell.setPath(false);
+            }
+        }
+    }
+
+    //full reset grid - resets everything to original state of the grid
+    public void fullResetGrid() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                Cell cell = cells[i][j];
+                cell.setVisited(false);
+                cell.setPath(false);
+                cell.setStart(false);
+                cell.setGoal(false);
+                cell.setObstacle(false);
+            }
+        }
+    }
 }
 

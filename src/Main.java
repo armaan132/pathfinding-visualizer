@@ -25,10 +25,24 @@ public class Main {
         //displays the grid initially
         grid.printGrid();
 
+        //prompts BFS change and runs BFS from pathfinding algorithms class, BFS method has printGrid() at end
         System.out.println("\n\nRunning BFS algorithm!!\n\n");
-
         PathfindingAlgorithms.bfs(grid, grid.getStartCell(), grid.getGoalCell());
 
-        //PUSHHHHHHHHHHH TIOOO GITTTTT
+        //call print grid here to update for other algorithms - doesn't reset goal or obstacles
+        System.out.println("\n\n Resetting grid, keeping start, goal, and obstacles");
+        grid.resetGrid();
+        //displays empty, resetted grid with start, goal, and obstacles kept 
+        grid.printGrid();
+
+        //prompts DFS change and runs DFS from pathfinding algorithms class, DFS method has printGrid() at end
+        System.out.println("\n\nRunning DFS algorithm!!\n\n");
+        PathfindingAlgorithms.dfs(grid, grid.getStartCell(), grid.getGoalCell());
+
+        //call print grid here to update for other algorithms - doesn't reset goal or obstacles
+        System.out.println("\n\n Resetting grid, keeping start, goal, and obstacles");
+        grid.resetGrid();
+        //displays empty, resetted grid with start, goal, and obstacles kept 
+        grid.printGrid();
     }
 }
