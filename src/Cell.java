@@ -29,6 +29,25 @@ public class Cell {
         return "(" + row + ", " + column + ")";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Cell)) {
+            return false;
+        }
+        Cell other = (Cell) obj;
+        return this.row == other.row && this.column == other.column;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Integer.hashCode(row);
+        result = 31 * result + Integer.hashCode(column);
+        return result;
+    }
+
     //set status for current cell - if is start
     public void setStart(boolean start) {
         isStart = start;
