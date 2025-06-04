@@ -11,6 +11,9 @@ public class PathfindingAlgorithms {
 
     //bfs - breadth first search method to use
     public static void bfs(Grid grid, Cell start, Cell goal) {
+        // normalize start and goal to cells from the grid
+        start = grid.getCell(start.getRow(), start.getColumn());
+        goal = grid.getCell(goal.getRow(), goal.getColumn());
         //create queue to track visited cells, prevent repeats, and map cell to cell for parent to child relationship
         Queue<Cell> frontier = new LinkedList<>();
         Map<Cell, Cell> path = new HashMap<>();
@@ -24,7 +27,7 @@ public class PathfindingAlgorithms {
         //once goal is found the loop breaks
         while (!frontier.isEmpty()) {
             Cell current = frontier.poll();
-            if (current == goal) {
+            if (current.equals(goal)) {
                 break;
             }
 
@@ -60,6 +63,9 @@ public class PathfindingAlgorithms {
     }
 
     public static void dfs(Grid grid, Cell start, Cell goal) {
+        // normalize start and goal to cells from the grid
+        start = grid.getCell(start.getRow(), start.getColumn());
+        goal = grid.getCell(goal.getRow(), goal.getColumn());
         //dfs uses stack, map parent child relationship
         Stack<Cell> frontier = new Stack<>();
         Map<Cell, Cell> path = new HashMap<>();
@@ -74,7 +80,7 @@ public class PathfindingAlgorithms {
             Cell current = frontier.pop();
 
             //finds goal - code breaks
-            if (current == goal) {
+            if (current.equals(goal)) {
                 break;
             }
 
